@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] · Huellitas Store</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/tienda.css" asp-append-version="true" />
+</head>
+<body>
+<header class="site-header">
+    <div class="container-xl nav-inner">
+        <a class="brand" asp-controller="Producto" asp-action="Catalogo"><span class="brand-mark">🐾</span> Huellitas<span class="brand-accent">Store</span></a>
+        <nav class="nav-links" aria-label="Navegación principal">
+            <a asp-controller="Producto" asp-action="Catalogo">Tienda</a>
+            <a asp-controller="TemporalVenta" asp-action="VerCarrito" class="cart-link">🛒 Mi carrito</a>
+            <a asp-controller="Usuario" asp-action="Login" class="nav-login">Ingresar</a>
+        </nav>
+    </div>
+</header>
+<main class="container-xl page-content" role="main">
+    @if (TempData["Error"] is string error) { <div class="alert alert-danger" role="alert">@error</div> }
+    @if (TempData["Exito"] is string exito) { <div class="alert alert-success" role="status">@exito</div> }
+    @RenderBody()
+</main>
+<footer class="site-footer"><div class="container-xl footer-inner"><div><strong>🐾 Huellitas Store</strong><p>El mejor cuidado para tus mascotas.</p></div><div><span>Proyecto académico MVC · Reconstruido</span><p>Catálogo y pedidos de demostración</p></div></div></footer>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

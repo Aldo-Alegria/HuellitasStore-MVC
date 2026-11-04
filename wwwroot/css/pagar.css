@@ -1,0 +1,29 @@
+﻿body, h1 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #eee;
+}
+
+.h1 {
+    text-align: left;
+    background-color: #483D8B;
+}
+
+body {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/006/986/352/non_2x/flat-design-character-e-commerce-electronic-payment-concept-illustration-cartoon-isolated-on-white-background-mobile-market-shop-smartphone-with-cart-people-purchase-digital-web-online-vector.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-group {
+    margin: 30px;
+    width: 50%;
+    height: 50px;
+}
+
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}

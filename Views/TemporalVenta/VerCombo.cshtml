@@ -1,0 +1,38 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<ProyectoDesarrollo.B.P.Models.TemporalVenta>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+</head>
+<body>
+    <h2>COMBO PARA LOS CLIENTES</h2>
+    @foreach(var clon in Model)
+    {
+        double subtotalItem = clon.precio * clon.cantidad;
+        <select name="select">
+            <option value="">
+                @{
+
+                    @clon.codigo
+                    ;
+                    @clon.nombre
+                    ;
+                    @clon.precio
+                    ;
+                    @clon.cantidad
+                    ;
+                    @Math.Round(subtotalItem, 2)
+                }
+            </option>
+        </select>
+        
+    }
+    
+
+</body>
+</html>
+

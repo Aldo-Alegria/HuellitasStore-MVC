@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProyectoDesarrollo.B.P.Models.TbUsuario>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    
+    <h3 class="">LISTADO DE USUARIOS</h3>
+    <h4>Buscar<input type="text" id="myInput" class="form-control" placeholder="Search ..." /></h4>
+    
+    <table class="table table-bordered">
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE DE USUARIO</td>
+            <td>CLAVE DEL USUARIO</td>
+
+        </tr>
+        <tbody id="myTable">
+            @foreach (var clon in Model)
+            {
+                <tr>
+                    <td>@clon.Id</td>
+                    <td>@clon.UsuNombre</td>
+                    <td>@clon.UsuClave</td>
+
+                    <td><a asp-action="Eliminar" asp-route-id="@clon.Id">Eliminar</a></td>
+                    <td><a asp-action="Modificar" asp-route-id="@clon.Id">Editar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>

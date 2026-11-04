@@ -1,0 +1,122 @@
+﻿
+<html>
+<head>
+	<link rel="stylesheet" href="~/css/Style.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+
+	<div class="barra">
+		<div class="elementobarra" role="group">
+			<button class="btn btn-default" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span></button>
+			<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-user"></span><a asp-action="Registro">Registro</a></button>
+			<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"><a asp-controller="TemporalVenta"  asp-action="VerCarrito">Carrito</a></span></button>
+			<button class="btn btn-default"><span class="glyphicon glyphicon-handbag"> <a asp-controller="Producto" asp-action="Catalogo">Catalogo</a></span></button>
+
+
+
+		</div>
+	</div>
+	<h1 style="text-align: center;"> Lista de productos </h1>
+	<div class="cuadrícula-de-productos">
+		<div class="fila">
+			<div class="elemento-de-producto">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9mDXFmtO6DWgzHYYBf1ErbWGppZ0zSYs1Qg&usqp=CAU"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Comeedero</p>
+					<p class="precio-del-producto">S/ 46.00</p>
+				</div>
+			</div>
+			<div class="elemento-de-producto elemento-de-producto-derecho">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto" src="https://dpq25p1ucac70.cloudfront.net/seller-place-files/mrkl-files/589/MARKETPLACE%20INTERNACIONAL/41m2baKoNCL_000044130312_22.jpeg"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Cama inflable</p>
+					<p class="precio-del-producto">S/ 79.90</p>
+				</div>
+			</div>
+			<div class="elemento-de-producto">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRerJxu4HnmfSmzYdMKj16HMhSdXyxPl_O-sQ&usqp=CAU"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Manguera masajeadora</p>
+					<p class="precio-del-producto">S/ 49.00</p>
+				</div>
+			</div>
+			<div class="elemento-de-producto">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto" src="https://ae01.alicdn.com/kf/He2333eff7255495290844f86e6d27088L/Katu-Bandanas-con-patr-n-de-hueso-para-mascota-accesorios-para-perros-peque-os-medianos-y.jpg_Q90.jpg_.webp"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Katu Bandas</p>
+					<p class="precio-del-producto">S/ 16.60</p>
+				</div>
+			</div>
+		</div>
+		<div class="fila">
+			<div class="elemento-de-producto">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto" src="https://http2.mlstatic.com/D_NQ_NP_975963-CBT50167523122_062022-W.jpg"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Pechera</p>
+					<p class="precio-del-producto">S/ 52.90</p>
+				</div>
+			</div>
+			<div class="elemento-de-product">
+
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto" src="https://home.ripley.com.pe/Attachment/WOP_5/Arrocito_Pet_Shop/ARC-005%20XL%20CASTA%C3%91O.jpg"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Collar</p>
+					<p class="precio-del-producto">S/ 89.90</p>
+				</div>
+			</div>
+			<div class="elemento-de-producto">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto con-borde" src="https://ae01.alicdn.com/kf/H0f12e050b1234b8aa4750533db88596fC.jpg"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Hueso masticable</p>
+					<p class="precio-del-producto">S/ 13.50</p>
+				</div>
+			</div>
+			<div class="elemento-de-producto">
+				<div class="detalles-del-producto">
+					<img class="imagen-de-producto con-borde" src="https://www.molitalia.com.pe/wp-content/uploads/2020/09/Dummie-Nutrican-Adultos-x-450g.jpg"
+						 width="250" height="250" alt="Imagen del producto">
+					<p class="nombre-del-producto">Comida para Perros</p>
+					<p class="precio-del-producto">S/ 19.90</p>
+				</div>
+			</div>
+
+		</div>
+		</div>
+	<section>
+		<div class="form-group">
+		</div>
+		<div class="text-dark">
+		</div>
+
+		<h2>Contacto</h2>
+		<form action="#" method="post">
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" name="nombre">
+			<label for="correo">Correo electrónico:</label>
+			<input type="email" id="correo" name="correo">
+			<label for="mensaje">Mensaje:</label>
+			<textarea id="mensaje" name="mensaje"></textarea>
+			<input type="submit" value="Enviar">
+		</form>
+	</section>
+	<footer>
+		<p> </p>
+		<p> </p>
+		<p>. </p>
+
+	</footer>
+</body>
+</html>
+
+
+

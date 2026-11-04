@@ -1,0 +1,12 @@
+@model ProyectoDesarrollo.B.P.Models.TbProducto
+@{ViewData["Title"] = Model.NomProducto;}
+<div class="breadcrumbs"><a asp-action="Catalogo">Catálogo</a> / @Model.NomProducto</div>
+<section class="detail-grid">
+    <div class="detail-image"><img src="@Url.Content("~/imagen/" + Model.Imagenes)" alt="@Model.NomProducto" /></div>
+    <div class="detail-panel"><span class="eyebrow">PRODUCTO · @Model.CodProducto</span><h1>@Model.NomProducto</h1><div class="detail-price">S/ @Model.PreProducto.ToString("N2")</div><p>Stock disponible: <strong>@Model.StkProducto unidades</strong></p>
+        <form asp-controller="TemporalVenta" asp-action="Agregar" method="post" class="detail-form">@Html.AntiForgeryToken()<input type="hidden" name="codigo" value="@Model.CodProducto" />
+            <label for="cantidad">Cantidad</label><input id="cantidad" type="number" name="cantidad" min="1" max="@Model.StkProducto" value="1" required />
+            <button class="btn-primary-custom" type="submit" disabled="@(Model.StkProducto <= 0)">＋ Agregar al carrito</button>
+        </form><p class="notice">Los precios y pedidos son de demostración. No se realizan cobros en línea.</p>
+    </div>
+</section>

@@ -1,0 +1,73 @@
+﻿@model ProyectoDesarrollo.B.P.Models.infoPago
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/pagar.css" />
+</head>
+<body>
+    <h1>Rellene los datos</h1>
+    <form asp-controller="" asp-action="" method="post">
+        <div class="form-group">
+            <label for="formGroupExampleInput">NumTarjeta</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Número de Tarjeta" asp-for="NumTarjeta">
+            <span asp-validation-for="NumTarjeta" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Fecha</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="MM/AA" asp-for="Fecha">
+            <span asp-validation-for="Fecha" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">CVV</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="CVV" asp-for="CVV">
+            <span asp-validation-for="CVV" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Nombres</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombres" asp-for="Nombres">
+            <span asp-validation-for="Nombres" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Apellidos</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Apellidos" asp-for="Apellidos">
+            <span asp-validation-for="Apellidos" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="formGroupExampleInput">Telefono</label>
+            <input type="text" class="form-control" Telefono="formGroupExampleInput" placeholder="Teléfono" asp-for="Telefono">
+            <span asp-validation-for="Telefono" class="text-danger"></span>
+        </div>
+
+
+
+
+
+
+
+        <div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" value="btn" name="pagar" data-toggle="modal" data-target="#exampleModal">Pagar</button>
+                <button type="submit" class="btn btn-primary" value="btn" name="modificar">Modificar</button>
+                <a asp-action="Index">Regresar</a>
+            </div>
+            
+        </div>
+    </form>
+</body>
+</html>

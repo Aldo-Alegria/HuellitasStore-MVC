@@ -1,0 +1,22 @@
+@model IEnumerable<ProyectoDesarrollo.B.P.Models.TemporalVenta>
+@{ViewData["Title"] = "Mi carrito"; var total = Model.Sum(x => (decimal)x.precio * x.cantidad);}
+<div class="breadcrumbs"><a asp-controller="Producto" asp-action="Catalogo">Catálogo</a> / Carrito</div>
+<div class="section-heading"><div><span class="eyebrow">TU SELECCIÓN</span><h1>Mi carrito de compras</h1><p>Revisa cantidades y confirma tu pedido de demostración.</p></div><span class="result-count">@Model.Sum(x => x.cantidad) artículos</span></div>
+@if(!Model.Any())
+{
+    <div class="empty-state"><div>🛒</div><h2>Tu carrito está vacío</h2><p>Descubre productos para tus mascotas y comienza a comprar.</p><a asp-controller="Producto" asp-action="Catalogo" class="btn-primary-custom">Ir al catálogo →</a></div>
+}
+else
+{
+    <div class="cart-layout"><section class="cart-items">
+    @foreach (var item in Model)
+    {
+        <article class="cart-item"><div class="cart-item-icon">🐾</div><div class="cart-item-body"><h3>@item.nombre</h3><span class="product-sku">@item.codigo</span><p>S/ @item.precio.ToString("N2") por unidad</p></div>
+            <div class="cart-item-actions"><form asp-action="Actualizar" method="post" class="quantity-form">@Html.AntiForgeryToken()<input type="hidden" name="codigo" value="@item.codigo" /><input type="number" aria-label="Cantidad de @item.nombre" min="1" name="cantidad" value="@item.cantidad" required /><button type="submit">Actualizar</button></form><strong>S/ @((item.precio * item.cantidad).ToString("N2"))</strong><form asp-action="EliminarProducto" method="post">@Html.AntiForgeryToken()<input type="hidden" name="codigo" value="@item.codigo"/><button type="submit" class="remove-btn">Eliminar</button></form></div>
+        </article>
+    }
+    <a asp-controller="Producto" asp-action="Catalogo" class="back-link">← Seguir comprando</a>
+    </section><aside class="order-summary"><h2>Resumen del pedido</h2><div class="summary-row"><span>Artículos</span><span>@Model.Sum(x => x.cantidad)</span></div><div class="summary-row"><span>Subtotal</span><span>S/ @total.ToString("N2")</span></div><div class="summary-row total"><strong>Total</strong><strong>S/ @total.ToString("N2")</strong></div><p class="notice">Precio final del catálogo. No se añade IGV adicional en esta pantalla.</p>
+    <form asp-action="ConfirmarPedido" method="post">@Html.AntiForgeryToken()<button type="submit" class="btn-primary-custom full-width">Registrar pedido de prueba →</button></form>
+    <p class="notice">Se registrará en la base de datos con el cliente de prueba CL01. No se procesa un pago real.</p></aside></div>
+}

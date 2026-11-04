@@ -1,0 +1,63 @@
+﻿@model ProyectoDesarrollo.B.P.Models.Usuario
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+</head>
+<body>
+    <form asp-controller="Usuario" asp-action="GrabarDatos" method="post">
+        <div class="form-group">
+            <label for="formGroupExampleInput">Id</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Id" asp-for="Id">
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Usuario" asp-for="UsuNombre">
+            <span asp-validation-for="UsuNombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Contraseña</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Contraseña" asp-for="UsuClave">
+            <span asp-validation-for="UsuClave" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Nombres y Apellidos</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nombres y Apellidos" asp-for="UsuNomApe">
+            <span asp-validation-for="UsuNomApe" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Dirección</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dirección" asp-for="UsuDirec">
+            <span asp-validation-for="UsuDirec" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Teléfono</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Teléfono" asp-for="UsuTelef">
+            <span asp-validation-for="UsuTelef" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Dirección de correo electrónico</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Dirección de correo electrónico" asp-for="UsuEmail">
+            <span asp-validation-for="UsuEmail" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" value="btn" name="grabar" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Grabar</button>
+            <button type="submit" class="btn btn-primary" value="btn" name="modificar">Modificar</button>
+        </div>
+        <div class="form-group">
+        </div>
+        
+    </form>
+    <div class="text-dark">
+        <a asp-controller="Usuario" asp-action="Login">Regresar</a>
+        <a asp-controller="Usuario" asp-action="ListarUsuarios">Listar</a>
+    </div>
+
+
+</body>
+</html>

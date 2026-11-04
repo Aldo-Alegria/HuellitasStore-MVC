@@ -1,0 +1,130 @@
+﻿@using Newtonsoft.Json
+@model IEnumerable<ProyectoDesarrollo.B.P.Models.TemporalVenta>
+<html>
+<head>
+    <style>
+        body {
+            background-image: url(https://img.freepik.com/vector-gratis/patron-colorido-garabatos-animales-palabras_52683-6875.jpg?w=740&t=st=1687837666~exp=1687838266~hmac=bf269eb03bcf1e0698979337723bcad1dc3ff42b980a1a922d4e9fbed6061462);
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        h6{
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        td {
+            color: #333;
+        }
+
+        .subtotal {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .igv {
+            text-align: right;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h3>INFORMACIÓN DE LA COMPRA</h3>
+        <h3>DATOS CLIENTE</h3>
+        <h6>Nombre y Apellidos: Mayerly Damian Gavino</h6>
+        <h6>Direción: Av. Javier Prado</h6>
+        <h6>Teléfono: 999 989 878</h6>
+        <h6>Dirección de correo electrónico: damian@gmail.com</h6>
+
+        <h3>Datos de la compra</h3>
+        <table>
+            <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+            <tbody>
+                @foreach (var clon in Model)
+                {
+                    double subtotalItem = clon.precio * clon.cantidad;
+                    <tr>
+                        <td>@clon.codigo</td>
+                        <td>@clon.nombre</td>
+                        <td>@clon.precio</td>
+                        <td>@clon.cantidad</td>
+                        <td>@Math.Round(subtotalItem, 2)</td>
+                    </tr>
+                }
+            </tbody>
+            
+        </table>
+        @{
+            double subtotal = Model.Sum(c => c.precio * c.cantidad);
+            double igv = subtotal * 0.18;
+            double total = subtotal + igv;
+        }
+        <div class="subtotal">
+            Subtotal: @Math.Round(subtotal, 2)
+        </div>
+        <div class="igv">
+            IGV (18%): @Math.Round(igv, 2)
+        </div>
+        <div class="total">
+            Total: @Math.Round(total, 2)
+        </div>
+
+        <form asp-controller="DVenta" asp-action="TransferirDetalles" method="post">
+            <input type="hidden" name="totalVenta" value="@Math.Round(total, 2)" />
+            <input type="hidden" name="detalles" value='@JsonConvert.SerializeObject(Model)' />
+            <button type="submit" class="btn btn-primary">Finaliza Compra</button>
+        </form>
+    </div>
+</body>
+</html>

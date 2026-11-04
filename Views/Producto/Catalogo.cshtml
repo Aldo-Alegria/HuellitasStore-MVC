@@ -1,0 +1,42 @@
+@model IEnumerable<ProyectoDesarrollo.B.P.Models.TbProducto>
+@using ProyectoDesarrollo.B.P.Models
+@{
+    ViewData["Title"] = "Catálogo";
+    var categorias = ViewBag.Categorias as IEnumerable<TbCategoria> ?? Enumerable.Empty<TbCategoria>();
+}
+<section class="hero">
+    <div class="hero-content">
+        <span class="eyebrow">✦ TODO PARA TUS COMPAÑEROS</span>
+        <h1>Más amor para <span>cada huellita.</span></h1>
+        <p>Alimentos, accesorios y juguetes para consentir a quienes siempre están contigo.</p>
+        <a href="#productos" class="btn-primary-custom">Explorar productos <span>→</span></a>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="hero-circle">🐶</div><span class="hero-small">🐱</span><span class="hero-dot">✦</span></div>
+</section>
+<section class="benefits" aria-label="Beneficios"><div>🚚 <strong>Compra sencilla</strong><small>Pedido en pocos pasos</small></div><div>💚 <strong>Productos seleccionados</strong><small>Para cada compañero</small></div><div>🔒 <strong>Carrito personal</strong><small>Guardado en tu sesión</small></div></section>
+<section id="productos" class="catalog-section">
+    <div class="section-heading"><div><span class="eyebrow">NUESTRO CATÁLOGO</span><h2>Encuentra su favorito</h2><p>Explora los productos disponibles y agrégalos al carrito.</p></div><span class="result-count">@Model.Count() productos</span></div>
+    <form method="get" asp-controller="Producto" asp-action="Catalogo" class="filter-bar">
+        <label class="search-wrap"><span>⌕</span><input aria-label="Buscar productos" type="search" name="buscar" value="@ViewBag.Buscar" placeholder="Buscar alimentos, juguetes, accesorios..." /></label>
+        <select name="categoria" aria-label="Filtrar por categoría"><option value="">Todas las categorías</option>@foreach(var cat in categorias){<option value="@cat.CodCategoria" selected="@(ViewBag.Categoria == cat.CodCategoria)">@cat.NomCat</option>}</select>
+        <button class="btn-dark-custom" type="submit">Filtrar</button>
+        <a asp-action="Catalogo" class="reset-link">Limpiar</a>
+    </form>
+    @if(!Model.Any()) {<div class="empty-state"><div>🔎</div><h3>No encontramos productos</h3><p>Prueba otro nombre o categoría.</p><a asp-action="Catalogo" class="btn-primary-custom">Ver todos</a></div>}
+    <div class="product-grid">
+    @foreach(var producto in Model)
+    {
+        <article class="product-card">
+            <div class="product-media"><span class="product-tag">@(producto.StkProducto > 0 ? "Disponible" : "Agotado")</span><img loading="lazy" src="@Url.Content("~/imagen/" + producto.Imagenes)" alt="@producto.NomProducto" onerror="this.style.display='none'" /></div>
+            <div class="product-info"><span class="product-sku">@producto.CodProducto</span><h3><a class="product-title-link" asp-controller="Producto" asp-action="Comprar" asp-route-codigo="@producto.CodProducto">@producto.NomProducto</a></h3><p class="stock">@(producto.StkProducto > 0 ? $"{producto.StkProducto} unidades disponibles" : "Sin stock")</p><div class="price-line"><strong>S/ @producto.PreProducto.ToString("N2")</strong><span>Precio unitario</span></div>
+                <form asp-controller="TemporalVenta" asp-action="Agregar" method="post" class="add-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="codigo" value="@producto.CodProducto" />
+                    <input type="hidden" name="cantidad" value="1" />
+                    <button class="btn-add" type="submit" disabled="@(producto.StkProducto <= 0)">＋ Agregar al carrito</button>
+                </form>
+            </div>
+        </article>
+    }
+    </div>
+</section>

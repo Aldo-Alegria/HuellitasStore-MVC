@@ -1,0 +1,27 @@
+﻿body, h1 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #eee;
+}
+
+.h1 {
+    text-align: left;
+    background-color: #483D8B;
+}
+body {
+    background-image: url(https://tumarcaenvenezuela.com/wp-content/uploads/2014/02/fondo-web-copy.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form-group {
+    margin: 30px;
+    width: 50%;
+    height: 50px;
+}
+
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}

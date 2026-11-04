@@ -1,0 +1,28 @@
+﻿@model ProyectoDesarrollo.B.P.Models.Usuario
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+</head>
+<body>
+    <form asp-controller="UsuarioRegistro" asp-action="ModificarUsuario" method="post">
+        <input type="hidden" asp-for="Id" placeholder="ID" />
+        Nombre de Usuario <input type="text" asp-for="UsuNombre" placeholder="Nombre de Usuario" />
+        Clave de Usuario <input type="text" asp-for="UsuClave" placeholder="Clave(maximo 8 dígitos)" />
+        @*
+            Añadiendo datos a modificar
+        *@
+        @{
+        }
+        Nombres y Apellidos <input type="text" asp-for="UsuNomApe" placeholder="Nombres y Apellidos" />
+        Dirección <input type="text" asp-for="UsuDirec" placeholder="Av. ######" />
+        Teléfono <input type="text" asp-for="UsuTelef" placeholder="9## ### ###" />
+        Dirección de correo electrónico <input type="text" asp-for="UsuEmail" placeholder="ejemplo@mail.com" />
+
+        <input type="submit" value="Modificar" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+}
+
+table {
+    font-family: 'Times New Roman', Times, serif;
+    width: auto;
+}
+
+td, th {
+    border: 2px solid #b200ff;
+    text-align: center;
+    padding: 8px;
+    background-color: aquamarine;
+}
+
+table, td, th {
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+
+input {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    background-image: url(https://img.freepik.com/vector-gratis/marco-vector-perros-sobre-fondo-blanco_53876-127700.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
